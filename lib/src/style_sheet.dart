@@ -11,6 +11,7 @@ class MarkdownStyleSheet {
   MarkdownStyleSheet({
     this.a,
     this.p,
+    this.li,
     this.code,
     this.h1,
     this.h2,
@@ -55,7 +56,7 @@ class MarkdownStyleSheet {
   }) : _styles = <String, TextStyle?>{
           'a': a,
           'p': p,
-          'li': p,
+          'li': li,
           'code': code,
           'pre': p,
           'h1': h1,
@@ -81,6 +82,7 @@ class MarkdownStyleSheet {
     return MarkdownStyleSheet(
       a: const TextStyle(color: Colors.blue),
       p: theme.textTheme.bodyMedium,
+      li: theme.textTheme.bodyMedium,
       code: theme.textTheme.bodyMedium!.copyWith(
         backgroundColor: theme.cardTheme.color ?? theme.cardColor,
         fontFamily: "monospace",
@@ -145,6 +147,7 @@ class MarkdownStyleSheet {
             : CupertinoColors.link.color,
       ),
       p: theme.textTheme.textStyle,
+      li: theme.textTheme.textStyle,
       code: theme.textTheme.textStyle.copyWith(
         backgroundColor: theme.brightness == Brightness.dark
             ? CupertinoColors.systemGrey6.darkColor
@@ -305,6 +308,7 @@ class MarkdownStyleSheet {
   MarkdownStyleSheet copyWith({
     TextStyle? a,
     TextStyle? p,
+    TextStyle? li,
     TextStyle? code,
     TextStyle? h1,
     TextStyle? h2,
@@ -350,6 +354,7 @@ class MarkdownStyleSheet {
     return MarkdownStyleSheet(
       a: a ?? this.a,
       p: p ?? this.p,
+      li: li ?? this.li,
       code: code ?? this.code,
       h1: h1 ?? this.h1,
       h2: h2 ?? this.h2,
@@ -402,6 +407,7 @@ class MarkdownStyleSheet {
     return copyWith(
       a: a!.merge(other.a),
       p: p!.merge(other.p),
+      li: li!.merge(other.li),
       code: code!.merge(other.code),
       h1: h1!.merge(other.h1),
       h2: h2!.merge(other.h2),
@@ -451,6 +457,9 @@ class MarkdownStyleSheet {
 
   /// The [TextStyle] to use for `p` elements.
   final TextStyle? p;
+
+  /// The [TextStyle] to use for `li` elements.
+  final TextStyle? li;
 
   /// The [TextStyle] to use for `code` elements.
   final TextStyle? code;
